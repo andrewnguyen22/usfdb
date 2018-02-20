@@ -32,6 +32,7 @@ public class Queries {
             "DELETE FROM enrolled WHERE sid=? AND cnum=?";
     final static String getSid =
             "SELECT sid FROM students WHERE username=?";
+    //TODO add teachers page
 
     public static String getSid() throws SQLException {
         Connection con = Global.getConnection();
