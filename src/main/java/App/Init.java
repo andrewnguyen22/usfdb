@@ -21,6 +21,7 @@ public class Init extends Application {
         //Create Bootup Window
         System.out.println("Starting app.");
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("init.fxml"));
+        System.out.println("1");//Check that the DB_tools is set right. Resources->mark as resource. add /deb/ to dep library
         Global.setLoader(loader);
         Global.setStage(stage);
         Parent root = loader.load();
