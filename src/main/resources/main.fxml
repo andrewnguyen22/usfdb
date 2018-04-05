@@ -50,7 +50,7 @@
       </Label>
       <ImageView fitHeight="28.0" fitWidth="41.0" layoutX="113.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="10.0">
          <image>
-            <Image url="@../files/cs/java/db_project_final/src/main/resources/images/icons8-classroom-filled-50.png" />
+            <Image url="@images/icons8-classroom-filled-50.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="47.0" layoutY="150.0" prefHeight="455.0" prefWidth="430.0" style="-fx-background-color: #777777;">

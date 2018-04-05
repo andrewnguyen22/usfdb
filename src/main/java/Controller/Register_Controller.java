@@ -35,22 +35,41 @@ public class Register_Controller {
         try {
             //if true -> login else create alert
             try {
-                if(name_field.getText()==null||name_field.getText().isEmpty())
+                boolean goodRegister = true;
+                if(name_field.getText()==null||name_field.getText().isEmpty()) {
                     createAlert();
-                if(email_field.getText()==null||name_field.getText().isEmpty()||isEmail(email_field.getText()))
+                    goodRegister = false;
+                }
+                if(email_field.getText()==null||name_field.getText().isEmpty()||!isEmail(email_field.getText())) {
                     createAlert();
-                if(dob_field.getText()==null||name_field.getText().isEmpty())
+                    goodRegister = false;
+
+                }
+                if(dob_field.getText()==null||name_field.getText().isEmpty()) {
                     createAlert();
-                if(pass_field.getText()==null||name_field.getText().isEmpty())
+                    goodRegister = false;
+
+                }
+                if(pass_field.getText()==null||name_field.getText().isEmpty()) {
                     createAlert();
-                if(year_dropdown.getValue().toString()==null||name_field.getText().isEmpty())
+                    goodRegister = false;
+
+                }
+                if(year_dropdown.getValue().toString()==null||name_field.getText().isEmpty()) {
                     createAlert();
-                Queries.register(username_field.getText(),
-                        email_field.getText(),
-                        name_field.getText(),
-                        dob_field.getText(),
-                        pass_field.getText(),
-                        year_dropdown.getValue().toString());
+                    goodRegister = false;
+
+                }
+
+                //Only registers if all fields are filled.
+                if (goodRegister == true) {
+                    Queries.register(username_field.getText(),
+                            email_field.getText(),
+                            name_field.getText(),
+                            dob_field.getText(),
+                            pass_field.getText(),
+                            year_dropdown.getValue().toString());
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -11,7 +11,8 @@ public class DB_Tools {
         System.out.println("Connection attempt started.");
         Class.forName("com.mysql.jdbc.Driver");
         System.out.println("Class Registered");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/usfdb", "root", "root");
+        //WINDOWS conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/usfdb", "root", "root");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:8889/usfdb", "root", "root");
         System.out.println("Connected to database");
         return conn;
     }
