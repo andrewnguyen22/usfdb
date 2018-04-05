@@ -3,9 +3,13 @@ package Controller;
 import App.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.lang.management.GarbageCollectorMXBean;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -108,5 +112,13 @@ public class Main_Controller {
             }
         }
         search();
+    }
+
+    public void toLogin() throws IOException {
+        System.out.println("Switching to dashboard");
+        FXMLLoader loader = new FXMLLoader(Init_Controller.class.getClassLoader().getResource("init.fxml"));
+        Parent root = loader.load();
+        Global.getStage().setScene(new Scene(root));
+        Global.setLoader(loader);
     }
 }
