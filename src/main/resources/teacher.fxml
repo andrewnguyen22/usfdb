@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #393D3F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Main_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #393D3F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Teacher_Controller">
    <children>
       <TextField fx:id="search_field" layoutX="549.0" layoutY="34.0" prefHeight="30.0" prefWidth="310.0" promptText="Search: Class or Teacher" />
       <Button fx:id="search_button" layoutX="858.0" layoutY="34.0" mnemonicParsing="false" onAction="#search" prefHeight="27.0" prefWidth="77.0" style="-fx-background-color: #E63946;" text="Search" textFill="WHITE">
@@ -22,17 +22,17 @@
             <Font name="Avenir Book" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="14.0" layoutY="7.0" text="USF" textFill="WHITE">
+      <Label layoutX="27.0" text="USF" textFill="WHITE">
          <font>
             <Font name="Avenir Book" size="90.0" />
          </font>
       </Label>
-      <Label layoutX="183.0" layoutY="64.0" text="DB" textFill="#e63946">
+      <Label layoutX="196.0" layoutY="57.0" text="Db" textFill="#e63946">
          <font>
             <Font name="Avenir Book" size="53.0" />
          </font>
       </Label>
-      <ImageView fitHeight="49.0" fitWidth="60.0" layoutX="186.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="49.0" fitWidth="60.0" layoutX="199.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Pringles_logo_2009.png" />
          </image>
@@ -54,17 +54,17 @@
       </ImageView>
       <AnchorPane layoutX="47.0" layoutY="150.0" prefHeight="455.0" prefWidth="430.0" style="-fx-background-color: #777777;">
          <children>
-            <Label layoutX="48.0" layoutY="34.0" text="Class Name" textFill="WHITE">
+            <Label layoutX="59.0" layoutY="88.0" text="Your Class" textFill="WHITE">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="class_name" layoutX="193.0" layoutY="34.0" text="None">
+            <Label fx:id="class_name" layoutX="195.0" layoutY="88.0" text="None">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="74.0" layoutY="88.0" text="Professor" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="31.0" prefHeight="35.0" prefWidth="123.0" text="Your Name" textFill="WHITE">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
@@ -74,12 +74,12 @@
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="professor_name" layoutX="193.0" layoutY="88.0" text="None">
+            <Label fx:id="professor_name" layoutX="195.0" layoutY="31.0" text="None">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="average_gpa" layoutX="193.0" layoutY="149.0" text="0">
+            <Label fx:id="average_gpa" layoutX="193.0" layoutY="149.0" text=" 0">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
@@ -89,22 +89,17 @@
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="description" alignment="TOP_LEFT" layoutX="59.0" layoutY="245.0" maxHeight="200.0" maxWidth="300.0" prefHeight="163.0" prefWidth="300.0" text="Search for a class or teacher to register for classes" wrapText="true">
+            <Label fx:id="description" alignment="TOP_LEFT" layoutX="59.0" layoutY="245.0" maxHeight="200.0" maxWidth="300.0" prefHeight="163.0" prefWidth="300.0" text="Search for a course to find Students" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="class_action" layoutX="106.0" layoutY="409.0" mnemonicParsing="false" onAction="#class_action" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #E63946;" text="Register For Class" textFill="WHITE">
-               <font>
-                  <Font name="Avenir Book" size="13.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
       <Button layoutX="897.0" layoutY="609.0" mnemonicParsing="false" onAction="#toLogin" text="logout" />
-      <Label layoutX="319.0" layoutY="43.0" text="Student" textFill="#e63946">
+      <Label layoutX="312.0" layoutY="40.0" text="Teacher" textFill="#e63946">
          <font>
-            <Font name="Avenir Book" size="39.0" />
+            <Font name="Avenir Book" size="46.0" />
          </font>
       </Label>
    </children>

@@ -13,6 +13,8 @@ public class Global {
     private static FXMLLoader loader;
     private static Stage stage;
     private static String sid;
+    private static String tid;
+    private static String name;
 
     public static String getSid() {
         return sid;
@@ -61,4 +63,12 @@ public class Global {
     public static void setUsername(String username) {
         Global.username = username;
     }
+
+    public static String getTid() { return tid; }
+
+    public static void setTid(String tid) { Global.tid = tid; }
+
+    public static String getName() { return name; }
+
+    public static void setName(String name) { Global.name = name; }
 }

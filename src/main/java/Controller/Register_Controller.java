@@ -33,7 +33,7 @@ public class Register_Controller {
 
     public void register() {
         try {
-            //if true -> login else create alert
+            //if true -> studentLogin else create alert
             try {
                 boolean goodRegister = true;
                 if(name_field.getText()==null||name_field.getText().isEmpty()) {
