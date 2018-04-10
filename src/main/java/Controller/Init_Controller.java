@@ -74,6 +74,8 @@ public class Init_Controller {
         Parent root = loader.load();
         Global.getStage().setScene(new Scene(root));
         Global.setLoader(loader);
+        Teacher_Controller t = loader.getController();
+        t.init();
         centerStage(Global.getStage(), Global.getStage().getWidth(), Global.getStage().getHeight());
         System.out.println("Showing Dashboard");
     }

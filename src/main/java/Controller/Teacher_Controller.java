@@ -26,6 +26,10 @@ public class Teacher_Controller {
     private List<Student> enrolled_students = new ArrayList<>();
     int status = 0;//0 for not in class
 
+    public void init() {
+        professor_name.setText(Global.getName());
+        description.setText(Global.getSalary());
+    }
 
     public void search() {
         try {
@@ -36,17 +40,15 @@ public class Teacher_Controller {
             student_table.getItems().clear();
             class_name.setText("None");
             average_gpa.setText("0");
-            description.setText("Search for a course to find Students");
             //Searching for course
             Course c = Queries.search(search_field.getText()).get(0);
-            class_name.setText(c.getClass_name());
             //Search for professor of that course
             Teacher t = Queries.getTeacher(c.getTeacher());
-            assert t != null;
-
+            if (t.getTid().equals(Global.getTid())) {
+                assert t != null;
+                class_name.setText(c.getClass_name());
                 System.out.println(t.getTid());
                 professor_name.setText(t.getName());
-                description.setText(c.getDescriptor());
                 //Get SID of enrolled
                 List<Enrolled> enrolled_list = Queries.getEnrolled(c.getCnum());
                 assert enrolled_list != null;
@@ -86,7 +88,7 @@ public class Teacher_Controller {
                     if (Global.getUsername().equals(s.getUsername()))
                         status = 1;
                 }
-
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

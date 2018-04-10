@@ -35,7 +35,7 @@ public class Queries {
     final static String getSid =
             "SELECT sid FROM students WHERE username=?";
     final static String getInfo =
-            "SELECT tid, name FROM teachers WHERE username=?";
+            "SELECT tid, name, salary FROM teachers WHERE username=?";
     //TODO add teachers page
 
     public static String getSid() throws SQLException {
@@ -57,6 +57,7 @@ public class Queries {
         if (rs.next()) {
             Global.setTid(rs.getString("tid"));
             Global.setName(rs.getString("name"));
+            Global.setSalary(rs.getString("salary"));
         }
         return null;
     }

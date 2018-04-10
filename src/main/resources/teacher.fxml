@@ -59,7 +59,7 @@
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="class_name" layoutX="195.0" layoutY="88.0" text="None">
+            <Label fx:id="class_name" layoutX="195.0" layoutY="88.0" text="None Selected">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
@@ -84,14 +84,19 @@
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="210.0" text="Description" textFill="WHITE">
+            <Label layoutX="115.0" layoutY="210.0" text="Salary" textFill="WHITE">
                <font>
                   <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="description" alignment="TOP_LEFT" layoutX="59.0" layoutY="245.0" maxHeight="200.0" maxWidth="300.0" prefHeight="163.0" prefWidth="300.0" text="Search for a course to find Students" wrapText="true">
+            <Label fx:id="description" alignment="TOP_LEFT" layoutX="209.0" layoutY="212.0" maxHeight="200.0" maxWidth="300.0" prefHeight="35.0" prefWidth="123.0" wrapText="true">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Avenir Book" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="195.0" layoutY="212.0" text="\$">
+               <font>
+                  <Font name="Avenir Book" size="24.0" />
                </font>
             </Label>
          </children>

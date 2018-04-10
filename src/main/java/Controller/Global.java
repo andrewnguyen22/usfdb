@@ -15,6 +15,7 @@ public class Global {
     private static String sid;
     private static String tid;
     private static String name;
+    private static String salary;
 
     public static String getSid() {
         return sid;
@@ -71,4 +72,8 @@ public class Global {
     public static String getName() { return name; }
 
     public static void setName(String name) { Global.name = name; }
+
+    public static String getSalary() { return salary; }
+
+    public static void setSalary(String salary) { Global.salary = salary; }
 }
