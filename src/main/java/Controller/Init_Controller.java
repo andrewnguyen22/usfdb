@@ -11,10 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 public class Init_Controller {
     @FXML
@@ -24,17 +22,26 @@ public class Init_Controller {
     public void login() {
         try {
             //Login Query Here
-            //if true -> login else create alert
+            //if true -> studentLogin else create alert
             try {
-                boolean success = Queries.login(username_field.getText(),pass_field.getText());
+                boolean success = Queries.studentLogin(username_field.getText(),pass_field.getText());
                 if(success) {
                     Global.setUsername(username_field.getText());
                     Global.setPass(pass_field.getText());
                     Queries.getSid();
-                    toDashboard();
+                    toStudentDashboard();
                 }
                 else{
-                    createAlert();
+                    success = Queries.teacherLogin(username_field.getText(),pass_field.getText());
+                    if(success) {
+                        Global.setUsername(username_field.getText());
+                        Global.setPass(pass_field.getText());
+                        Queries.getInfo();
+                        toTeacherDashboard();
+                    }
+                    else {
+                        createAlert();
+                    }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -52,7 +59,7 @@ public class Init_Controller {
         centerStage(Global.getStage(), Global.getStage().getWidth(), Global.getStage().getHeight());
         System.out.println("Showing Register");
     }
-    private void toDashboard() throws IOException {
+    private void toStudentDashboard() throws IOException {
         System.out.println("Switching to dashboard");
         FXMLLoader loader = new FXMLLoader(Init_Controller.class.getClassLoader().getResource("main.fxml"));
         Parent root = loader.load();
@@ -61,6 +68,18 @@ public class Init_Controller {
         centerStage(Global.getStage(), Global.getStage().getWidth(), Global.getStage().getHeight());
         System.out.println("Showing Dashboard");
     }
+    private void toTeacherDashboard() throws IOException {
+        System.out.println("Switching to dashboard");
+        FXMLLoader loader = new FXMLLoader(Init_Controller.class.getClassLoader().getResource("teacher.fxml"));
+        Parent root = loader.load();
+        Global.getStage().setScene(new Scene(root));
+        Global.setLoader(loader);
+        Teacher_Controller t = loader.getController();
+        t.init();
+        centerStage(Global.getStage(), Global.getStage().getWidth(), Global.getStage().getHeight());
+        System.out.println("Showing Dashboard");
+    }
+
 
     private void centerStage(Stage stage, double width, double height) {
         javafx.geometry.Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();

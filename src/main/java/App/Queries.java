@@ -15,8 +15,10 @@ public class Queries {
     final static String register_query =
             "INSERT into students (username, email, name, dob, pass, year)"
                     + " values (?,?,?,?,?,?)";
-    final static String login_query =
+    final static String student_login_query =
             "SELECT sid FROM students WHERE username = ? AND pass=?";
+    final static String teacher_login_query =
+            "SELECT tid FROM teachers WHERE username = ? AND pass=?";
     final static String search_query =
             "SELECT * FROM course WHERE class_name LIKE ?";
     final static String teacher_query =
@@ -32,6 +34,8 @@ public class Queries {
             "DELETE FROM enrolled WHERE sid=? AND cnum=?";
     final static String getSid =
             "SELECT sid FROM students WHERE username=?";
+    final static String getInfo =
+            "SELECT tid, name, salary FROM teachers WHERE username=?";
     //TODO add teachers page
 
     public static String getSid() throws SQLException {
@@ -41,6 +45,19 @@ public class Queries {
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
             Global.setSid(rs.getString("sid"));
+        }
+        return null;
+    }
+
+    public static String getInfo() throws SQLException {
+        Connection con = Global.getConnection();
+        PreparedStatement pstmt = con.prepareStatement(getInfo);
+        pstmt.setString(1, Global.getUsername());
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            Global.setTid(rs.getString("tid"));
+            Global.setName(rs.getString("name"));
+            Global.setSalary(rs.getString("salary"));
         }
         return null;
     }
@@ -143,10 +160,20 @@ public class Queries {
         return null;
     }
 
-    public static boolean login(String username, String password) throws SQLException {
+    public static boolean studentLogin(String username, String password) throws SQLException {
         Connection conn = Global.getConnection();
-        // create the mysql insert preparedstatement
-        PreparedStatement preparedStmt = conn.prepareStatement(login_query);
+        // create the mysql insert prepared statement
+        PreparedStatement preparedStmt = conn.prepareStatement(student_login_query);
+        preparedStmt.setString(1, username);
+        preparedStmt.setString(2, password);
+        ResultSet rs = preparedStmt.executeQuery();
+        return rs.next();
+    }
+
+    public static boolean teacherLogin(String username, String password) throws SQLException {
+        Connection conn = Global.getConnection();
+        // create the mysql insert prepared statement
+        PreparedStatement preparedStmt = conn.prepareStatement(teacher_login_query);
         preparedStmt.setString(1, username);
         preparedStmt.setString(2, password);
         ResultSet rs = preparedStmt.executeQuery();

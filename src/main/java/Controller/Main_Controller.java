@@ -3,9 +3,15 @@ package Controller;
 import App.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.lang.management.GarbageCollectorMXBean;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,15 +26,20 @@ public class Main_Controller {
     public TableView student_table;
     public Button class_action;
     private String cnum;
-    private List<Student> enrolled_students=new ArrayList<>();
+    private List<Student> enrolled_students = new ArrayList<>();
     int status = 0;//0 for not in class
+
     public void search() {
         try {
             //clear values
-            status=0;
+            status = 0;
             enrolled_students.clear();
             student_table.getColumns().clear();
             student_table.getItems().clear();
+            professor_name.setText("None");
+            class_name.setText("None");
+            average_gpa.setText("0");
+            description.setText("Search for a class or teacher to register for classes");
             //Searching for course
             Course c = Queries.search(search_field.getText()).get(0);
             class_name.setText(c.getClass_name());
@@ -70,26 +81,25 @@ public class Main_Controller {
             student_table.styleProperty().setValue("-fx-font-size:10px;");
             average_gpa.setText(Double.toString(totalgpa / (double) student_count));
             //Check if logged in user is within class
-            for (Student s:enrolled_students) {
+            for (Student s : enrolled_students) {
                 //assuming usernames are prim keys as well
                 //TODO add in functionality
                 if (Global.getUsername().equals(s.getUsername()))
-                    status=1;
+                    status = 1;
             }
-            if (status==1){
+            if (status == 1) {
                 class_action.setText("Drop This Class");
-            }
-            else{
+            } else {
                 class_action.setText("Register For This Class");
             }
-            cnum=c.getCnum();
+            cnum = c.getCnum();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public void class_action() {
-        if (status==0){
+        if (status == 0) {
             //register
             System.out.println("Registering for class");
             try {
@@ -97,8 +107,7 @@ public class Main_Controller {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             //drop
             System.out.println("Dropping Class");
             try {
@@ -108,5 +117,20 @@ public class Main_Controller {
             }
         }
         search();
+    }
+
+    public void toLogin() throws IOException {
+        System.out.println("Switching to dashboard");
+        FXMLLoader loader = new FXMLLoader(Init_Controller.class.getClassLoader().getResource("init.fxml"));
+        Parent root = loader.load();
+        Global.getStage().setScene(new Scene(root));
+        Global.setLoader(loader);
+        centerStage(Global.getStage(), Global.getStage().getWidth(), Global.getStage().getHeight());
+    }
+
+    private void centerStage(Stage stage, double width, double height) {
+        javafx.geometry.Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - width) / 2);
+        stage.setY((screenBounds.getHeight() - height) / 2);
     }
 }
